@@ -15,19 +15,19 @@ int main(int argc, char *argv[]){
 		printf("Please enter a number for value a: ");
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoad) != 1);
+	while(sscanf(inBuffer, "%lf", toLoad) != 1 || *toLoad == 0);
 
 	do{
 		printf("Please enter a number for value b: ");
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoad + sizeof(double)) != 1);
+	while(sscanf(inBuffer, "%lf", toLoad + sizeof(double)) != 1 || *(toLoad + sizeof(double)) == 0);
 	
 	do{
 		printf("Please enter a number for value c: ");
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoad + 2 * sizeof(double)) != 1);
+	while(sscanf(inBuffer, "%lf", toLoad + 2 * sizeof(double)) != 1 || *(toLoad + 2 * sizeof(double)) == 0);
 
 
 	double i_a = *toLoad, i_b = *(toLoad + sizeof(double)), i_c = *(toLoad + 2 * sizeof(double)); // Will be parsed from input
