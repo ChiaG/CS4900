@@ -2,59 +2,39 @@
 #include <gmp.h>
 
 int main(int argc, char *argv[]){
+	mpf_set_default_prec(5);
 
-mpf_t f_a, f_b, f_c;
-mpf_t disc, d1, d2, num; //for discriminant
-mpf_t square, firstNum, secondNum, denom;
-float i_a, i_b, i_c; //input use
-int resultingType;
+	double i_a, i_b, i_c; // Will be parsed from input
+	mpf_t a, b, c; // Will be worked with throughout
 
-mpf_init(f_a); //initialize argument to 0
-mpf_init(f_b);
-mpf_init(f_c); 
+	// mpf_set_d(num, -4);
 
-mpf_init(d1); 
-mpf_init(d2); 
-mpf_init(disc); 
+	if(argc<4){
 
-mpf_init(square);
-mpf_init(firstNum);
-mpf_init(secondNum);
-mpf_init(denom);
+	    printf("Please enter 3 floating-point numbers with a newline after each:\n");
+	        scanf("%lf",&i_a);
+	        scanf("%lf",&i_b);
+	        scanf("%lf",&i_c);
+	} 
 
-mpf_set_d(num, -4);
+	else{
+	    sscanf(argv[1], "%lf", &i_a);
+	    sscanf(argv[2], "%lf", &i_b);
+	    sscanf(argv[3], "%lf", &i_c);
+	}
 
-if(argc<4){
+	printf("%f %f %f\n\n",i_a,i_b,i_c); // Prints doubles to ensure accuracy
+	mpf_init_set_d(a,i_a); // Initiates and sets a
+	mpf_set_d(a,i_a);
+	gmp_printf("a: %F\n", a); // Prints a, showing that it was not assigned correctly
+	mpf_init_set_d(b,i_b);
+	gmp_printf("b: %F\n", b); // Prints b, showing that it was not assigned correctly
+	mpf_init_set_d(c,i_c);
+	gmp_printf("c: %F\n", c); // Prints c, showing that it was not assigned correctly
 
-    printf("%s","Please input 3 floating point numbers");
-        scanf("%f",&i_a);
-        scanf("%f",&i_b);
-        scanf("%f",&i_c);
+	// gmp_printf("a: %F\n b: %F\n c: %F",a,b,c);
 
-} 
-
-else{
-
-    sscanf(argv[1], "%f", &i_a);
-    sscanf(argv[2], "%f", &i_b);
-    sscanf(argv[3], "%f", &i_c);
-
-}
-
-mpf_set_d(f_a,i_a);
-mpf_set_d(f_b,i_b);
-mpf_set_d(f_c,i_c);
-
-mpf_mul(d1, f_b, f_b);
-mpf_mul(d2, f_a, f_c);
-mpf_mul(d2, num, d2);
-mpf_add(disc, d1, d2);
-
-mpf_set_d(num, 2);
-mpf_mul(denom, num, f_a);
-
-mpf_set_d(num, 0);
-resultingType = mpf_cmp(disc, num);
-mpf_set_d(num, 2);
-
+	mpf_clear(a);
+	mpf_clear(b);
+	mpf_clear(c);
 }

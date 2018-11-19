@@ -1,15 +1,9 @@
 CC = gcc
+CFLAGS = -Wall -pedantic -lgmp -lm -o
 
-#CFLAGS = -g -Wall -pedantic
-CFLAGS = -O -Wall -pedantic
- 
-main : main.o
-	gcc main.c -o main.o -lgmp -lm
-
+main: main.c
+	${CC} main.c ${CFLAGS} main
 clean:
-	rm -f *.o core main
-
+	rm -f *.o main
 run: main
-	./main
-	
-
+	./main ${ARGS}
