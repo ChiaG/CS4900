@@ -3,7 +3,7 @@
 #include <gmp.h>
 
 int main(int argc, char *argv[]){
-	mpf_set_default_prec(5);
+	mpf_set_default_prec(6);
 
 	double * toLoad = malloc(sizeof(double) * 3);
 	char * inBuffer = malloc(sizeof(char) * 256);
@@ -59,9 +59,116 @@ int main(int argc, char *argv[]){
 	mpf_clear(bsq); // Don't need these, now
 	mpf_clear(fac);
 
-	// To be resumed ***************************
+	// Finding the roots ***************************
+
+	mpf_t zeroCmp; //0.0 initialized for comparison
+	mpf_init_set_d(zeroCmp, 0.0);
+
+	mpf_t sqrt;     //square root of discriminant
+
+	mpf_t rootOne;  //two roots at most
+	mpf_t rootTwo;
+
+	mpf_t numerator;      //either (-b + discriminant) or (-b - discriminant)
+	mpf_t denom;	//2a basically
+	mpf_t two;      //2, used for getting negative b
+
+	mpf_t neg_b;    //negative b for operation
+		
+	mpf_init_set_d(two, 2.0); //set two to 2
+	mpf_init(sqrt);
+	mpf_init(rootOne);
+	mpf_init(rootTwo);
+	mpf_init(numerator);
+	mpf_init(denom);
+	mpf_init(neg_b);
+	
+	mpf_mul(denom, a, two);		//2*a
+
+		if(mpf_cmp(denom, zeroCmp) == 0){		//check if a equals 0, there didn't 
+			printf("%s","A cannot be zero");	//seem to be a check for that so this is temp
+			return 0;
+		}
+
+		mpf_t twoB;  //2 times b
+		mpf_init(twoB);
+
+	mpf_mul(twoB, b, two);
+		
+	mpf_sub(neg_b, b, twoB);  //to get the negative of b I bascially subtracted b by 2*b
+		mpf_clear(twoB);
+
+	if(0 > mpf_cmp(discriminant, zeroCmp)){ //comparewith 0 to see if negative
+		printf("%s\n","There are no real solutions");
+	}
+
+	else if(mpf_cmp(discriminant, zeroCmp) == 0){		//-b/2a if discriminant is 0
+		mpf_div(rootOne, neg_b, denom);
+		gmp_printf("All Roots: %Ff\n", rootOne);		//rootOne = rootTwo etc
+	}
+
+	else{
+
+		mpf_sqrt(sqrt, discriminant); //get square root of b^2-4ac
+
+		gmp_printf("Sqare Root of Discriminant: %Ff\n", sqrt);
+		gmp_printf("Negative B: %Ff\n", neg_b);
+
+		/*******************************
+		mpf_add(numerator, neg_b,sqrt);		//-b + sqrt
+		mpf_div(rootOne, numerator, denom);  //divide -b +/- discriminant by 2ac for first root
+
+		mpf_sub(numerator, neg_b, sqrt);	//-b - sqrt
+		mpf_div(rootTwo, numerator, denom);
+		********************************/
+
+		/*******************************
+		//I used this only because of the link dustin sent for largest root, otherwise, 
+		//I would have done the top and compared to print instead.
+		********************************/
+
+		if(0 > mpf_cmp(b, zeroCmp)){  //if b is negative then do -b+sqrt/2a
+			mpf_add(numerator, neg_b,sqrt);
+			mpf_div(rootOne, numerator, denom);
+
+			if(mpf_cmp(rootOne, c)>0){				//if root one is greater than c then c/rootOne is rootTwo
+				mpf_div(rootTwo, c, rootOne);
+			}
+			else{
+				mpf_sub(numerator, neg_b,sqrt);
+				mpf_div(rootTwo, numerator, denom);
+			}
+
+		}
+		else{
+			mpf_sub(numerator, neg_b,sqrt);
+			mpf_div(rootOne, numerator, denom);
+
+			if(mpf_cmp(rootOne, c)>0){				//if root one is greater than c then c/rootOne is rootTwo
+				mpf_div(rootTwo, c, rootOne);
+			}
+			else{
+				mpf_add(numerator, neg_b,sqrt);
+				mpf_div(rootTwo, numerator, denom);
+			}
+		}
+
+
+		gmp_printf("First Root: %Ff\n", rootOne);
+		gmp_printf("Second Root: %Ff\n", rootTwo);
+
+	}
+
 
 	mpf_clear(a);
 	mpf_clear(b);
 	mpf_clear(c);
+	mpf_clear(zeroCmp);
+	mpf_clear(sqrt);
+	mpf_clear(rootOne);
+	mpf_clear(rootTwo);
+	mpf_clear(numerator);
+	mpf_clear(denom);
+	mpf_clear(two);
+	mpf_clear(neg_b);
 }
