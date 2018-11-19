@@ -37,7 +37,7 @@ see https://www.gnu.org/licenses/.
 
 /* The gmp-mparam.h file (a string) the tune program should suggest updating.
    */
-#define GMP_MPARAM_H_SUGGEST "./mpn/x86_64/coreisbr/gmp-mparam.h"
+#define GMP_MPARAM_H_SUGGEST "./mpn/x86_64/coreinhm/gmp-mparam.h"
 
 /* Define to 1 if you have the `alarm' function. */
 #define HAVE_ALARM 1
@@ -242,8 +242,8 @@ see https://www.gnu.org/licenses/.
 #define HAVE_NATIVE_mpn_addlsh1_n 1
 #define HAVE_NATIVE_mpn_addlsh2_n 1
 #define HAVE_NATIVE_mpn_addlsh_n 1
-#define HAVE_NATIVE_mpn_addlsh1_nc 1
-#define HAVE_NATIVE_mpn_addlsh2_nc 1
+/* #undef HAVE_NATIVE_mpn_addlsh1_nc */
+/* #undef HAVE_NATIVE_mpn_addlsh2_nc */
 #define HAVE_NATIVE_mpn_addlsh_nc 1
 /* #undef HAVE_NATIVE_mpn_addlsh1_n_ip1 */
 /* #undef HAVE_NATIVE_mpn_addlsh2_n_ip1 */
@@ -300,7 +300,7 @@ see https://www.gnu.org/licenses/.
 #define HAVE_NATIVE_mpn_modexact_1_odd 1
 #define HAVE_NATIVE_mpn_modexact_1c_odd 1
 #define HAVE_NATIVE_mpn_mul_1 1
-/* #undef HAVE_NATIVE_mpn_mul_1c */
+#define HAVE_NATIVE_mpn_mul_1c 1
 #define HAVE_NATIVE_mpn_mul_2 1
 /* #undef HAVE_NATIVE_mpn_mul_3 */
 /* #undef HAVE_NATIVE_mpn_mul_4 */
@@ -318,7 +318,7 @@ see https://www.gnu.org/licenses/.
 #define HAVE_NATIVE_mpn_rsblsh1_n 1
 #define HAVE_NATIVE_mpn_rsblsh2_n 1
 #define HAVE_NATIVE_mpn_rsblsh_n 1
-#define HAVE_NATIVE_mpn_rsblsh1_nc 1
+/* #undef HAVE_NATIVE_mpn_rsblsh1_nc */
 /* #undef HAVE_NATIVE_mpn_rsblsh2_nc */
 /* #undef HAVE_NATIVE_mpn_rsblsh_nc */
 #define HAVE_NATIVE_mpn_rsh1add_n 1
