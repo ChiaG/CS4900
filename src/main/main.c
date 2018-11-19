@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
 	mpf_set_d(c,i_c);
 	// gmp_printf("c: %Ff\n", c); 
 
-	gmp_printf("a: %Ff\nb: %Ff\nc: %Ff\n",a,b,c);
+	gmp_printf("a: %Ff\nb: %Ff\nc: %Ff",a,b,c);
 
 	mpf_clear(a);
 	mpf_clear(b);
