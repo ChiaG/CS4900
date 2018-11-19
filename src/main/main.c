@@ -14,6 +14,7 @@ int main(int argc, char *argv[]){
 	do{
 		printf("Please enter a number for value a: ");
 		fgets(inBuffer, 256, stdin);
+		// if (*toLoad == 0) { printf("a, b, and c can't be zero!\n"); }
 	}
 	while(sscanf(inBuffer, "%lf", toLoad) != 1 || *toLoad == 0);
 
@@ -40,7 +41,7 @@ int main(int argc, char *argv[]){
 	mpf_init_set_d(b,i_b);
 	mpf_init_set_d(c,i_c);
 
-	gmp_printf("a: %Ff\nb: %Ff\nc: %Ff\n",a,b,c);
+	// gmp_printf("\na: %Ff\nb: %Ff\nc: %Ff\n",a,b,c);
 
 	mpf_init(discriminant); // Initiating values to get discriminant
 	mpf_init(bsq);
@@ -54,7 +55,7 @@ int main(int argc, char *argv[]){
 
 	mpf_sub(discriminant,bsq,fac); // Get discriminant
 
-	gmp_printf("Discriminant: %Ff\n",discriminant);
+	gmp_printf("\nDiscriminant: %Ff\n",discriminant);
 
 	mpf_clear(bsq); // Don't need these, now
 	mpf_clear(fac);
@@ -85,18 +86,7 @@ int main(int argc, char *argv[]){
 	
 	mpf_mul(denom, a, two);		//2*a
 
-		if(mpf_cmp(denom, zeroCmp) == 0){		//check if a equals 0, there didn't 
-			printf("%s","A cannot be zero");	//seem to be a check for that so this is temp
-			return 0;
-		}
-
-		mpf_t twoB;  //2 times b
-		mpf_init(twoB);
-
-	mpf_mul(twoB, b, two);
-		
-	mpf_sub(neg_b, b, twoB);  //to get the negative of b I bascially subtracted b by 2*b
-		mpf_clear(twoB);
+	mpf_neg(neg_b, b);
 
 	if(0 > mpf_cmp(discriminant, zeroCmp)){ //comparewith 0 to see if negative
 		printf("%s\n","There are no real solutions");
@@ -104,15 +94,16 @@ int main(int argc, char *argv[]){
 
 	else if(mpf_cmp(discriminant, zeroCmp) == 0){		//-b/2a if discriminant is 0
 		mpf_div(rootOne, neg_b, denom);
-		gmp_printf("All Roots: %Ff\n", rootOne);		//rootOne = rootTwo etc
+		gmp_printf("\nAll Roots: %Ff\n", rootOne);		//rootOne = rootTwo etc
+		printf("Accurate to at least 6 decimal places.\n");
 	}
 
 	else{
 
 		mpf_sqrt(sqrt, discriminant); //get square root of b^2-4ac
 
-		gmp_printf("Sqare Root of Discriminant: %Ff\n", sqrt);
-		gmp_printf("Negative B: %Ff\n", neg_b);
+		// gmp_printf("Square Root of Discriminant: %Ff\n", sqrt);
+		// gmp_printf("Negative B: %Ff\n", neg_b);
 
 		/*******************************
 		mpf_add(numerator, neg_b,sqrt);		//-b + sqrt
@@ -153,10 +144,9 @@ int main(int argc, char *argv[]){
 			}
 		}
 
-
-		gmp_printf("First Root: %Ff\n", rootOne);
+		gmp_printf("\nFirst Root: %Ff\n", rootOne);
 		gmp_printf("Second Root: %Ff\n", rootTwo);
-
+		printf("Accurate to at least 6 decimal places.\n");
 	}
 
 
