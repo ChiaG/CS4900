@@ -1,26 +1,47 @@
-#include <stdio.h>			
+#include <stdio.h>
+#include <stdlib.h>			
 #include <gmp.h>
 
 int main(int argc, char *argv[]){
+
+	double * toLoad = malloc(sizeof(double) * 3);
+	int debugIndicator;
+	char * inBuffer = malloc(sizeof(char) * 256);
+	
+	printf("Note: Program will continue execution until three valid inputs are entered.\n");
+	printf("Note: Program will disregard any numerical entries after the first for a given value.\n");
+
+	do{
+		printf("Please enter a number for value a: ");
+		fgets(inBuffer, 256, stdin);
+		debugIndicator = sscanf(inBuffer, "%lf", toLoad);
+	}
+	while(debugIndicator != 1);
+
+	debugIndicator = 0;
+	
+	do{
+		printf("Please enter a number for value b: ");
+		fgets(inBuffer, 256, stdin);
+		debugIndicator = sscanf(inBuffer, "%lf", toLoad + sizeof(double));
+	}
+	while(debugIndicator != 1);
+
+	debugIndicator = 0;
+	
+	do{
+		printf("Please enter a number for value c: ");
+		fgets(inBuffer, 256, stdin);
+		debugIndicator = sscanf(inBuffer, "%lf", toLoad + 2 * sizeof(double));
+	}
+	while(debugIndicator != 1);
+
 	mpf_set_default_prec(5);
 
-	double i_a, i_b, i_c; // Will be parsed from input
+	double i_a = *toLoad, i_b = *(toLoad + sizeof(double)), i_c = *(toLoad + 2 * sizeof(double)); // Will be parsed from input
 	mpf_t a, b, c; // Will be worked with throughout
 
 	// mpf_set_d(num, -4);
-
-	if(argc<4){
-	    printf("Please enter 3 floating-point numbers with a newline after each:\n");
-        scanf("%lf",&i_a);
-        scanf("%lf",&i_b);
-        scanf("%lf",&i_c);
-	} 
-
-	else{
-	    sscanf(argv[1], "%lf", &i_a);
-	    sscanf(argv[2], "%lf", &i_b);
-	    sscanf(argv[3], "%lf", &i_c);
-	}
 
 	mpf_init(a);
 	mpf_init(b);
