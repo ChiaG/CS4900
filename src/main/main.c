@@ -2,6 +2,10 @@
 #include <stdlib.h>			
 #include <gmp.h>
 
+void findDiscriminant(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant);
+int findNumRoots(mpf_t discriminant);
+void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, int numRoots);
+
 int main(int argc, char *argv[])
 {
 	mpf_set_default_prec(6);
@@ -41,18 +45,23 @@ int main(int argc, char *argv[])
 	mpf_t a;
 	mpf_t b;
 	mpf_t c; 
-	
-	//The variables that will store the discriminant,
-	//b squared, and 4*ac, respectively, and the variable that will let us multiply a*c 
-	// by four to get 4*ac
-	mpf_t discriminant;
-	mpf_t bsq; 
-	mpf_t fac;
-	mpf_t num;
 
 	mpf_init_set_d(a, i_a); 
 	mpf_init_set_d(b, i_b);
 	mpf_init_set_d(c, i_c);
+	
+	mpf_t discriminant;
+	int numRoots;
+	mpf_init(discriminant); // Initiating values to get discriminant
+
+	findDiscriminant(a, b, c, discriminant);  //find discriminant
+	numRoots = findNumRoots(discriminant);    //find number of roots
+
+	findRoots(a, b, c, discriminant, numRoots);	//find roots
+    
+	/*mpf_t bsq; 
+	mpf_t fac;
+	mpf_t num;
 
 	// gmp_printf("\na: %Ff\nb: %Ff\nc: %Ff\n", a, b, c);
 
@@ -73,9 +82,11 @@ int main(int argc, char *argv[])
 	mpf_clear(bsq); // Don't need these, now
 	mpf_clear(fac);
 
-	// Finding the roots ***************************
+	*/
 
-	mpf_t zeroCmp; //0.0 initialized for comparison
+	//----------------Finding the roots----------------
+
+	/*mpf_t zeroCmp; //0.0 initialized for comparison
 	mpf_init_set_d(zeroCmp, 0.0);
 
 	mpf_t sqrt;     //square root of discriminant
@@ -117,19 +128,10 @@ int main(int argc, char *argv[])
 
 		// gmp_printf("Square Root of Discriminant: %Ff\n", sqrt);
 		// gmp_printf("Negative B: %Ff\n", neg_b);
-
-		/*******************************
-		mpf_add(numerator, neg_b,sqrt);		//-b + sqrt
-		mpf_div(rootOne, numerator, denom);  //divide -b +/- discriminant by 2ac for first root
-
-		mpf_sub(numerator, neg_b, sqrt);	//-b - sqrt
-		mpf_div(rootTwo, numerator, denom);
-		********************************/
-
-		/*******************************
+	
 		//I used this only because of the link dustin sent for largest root, otherwise, 
 		//I would have done the top and compared to print instead.
-		********************************/
+		
 
 		if(0 > mpf_cmp(b, zeroCmp)) {  //if b is negative then do -b+sqrt/2a
 			mpf_add(numerator, neg_b,sqrt);
@@ -173,5 +175,5 @@ int main(int argc, char *argv[])
 	mpf_clear(numerator);
 	mpf_clear(denom);
 	mpf_clear(two);
-	mpf_clear(neg_b);
+	mpf_clear(neg_b);*/
 }
