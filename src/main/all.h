@@ -2,7 +2,8 @@
 #define ALL_H
 
 #include <stdio.h>
-#include <stdlib.h>			
+#include <stdlib.h>	
+#include <unistd.h>		
 #include <gmp.h>
 #include "../modules/runtimeLoad.h"
 #include "../modules/findRoots.h"
