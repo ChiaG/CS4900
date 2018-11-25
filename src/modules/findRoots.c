@@ -1,4 +1,4 @@
-#include "../main/All.h"
+#include "../main/all.h"
 
 void findDiscriminant(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant)
 {

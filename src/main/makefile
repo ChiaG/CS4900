@@ -6,8 +6,8 @@ main: main.c ../modules/runtimeLoad.c ../modules/findRoots.c
 
 main.o ../modules/runtimeLoad.o ../modules/findRoots.o: All.h
 
-All.h: ../modules/runtimeLoad.h ../modules/findRoots.h
-	touch All.h
+all.h: ../modules/runtimeLoad.h ../modules/findRoots.h
+	touch all.h
 
 clean:
 	rm -f *.o main
