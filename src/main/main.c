@@ -10,36 +10,12 @@ int main(int argc, char *argv[])
 {
 	mpf_set_default_prec(6);
 
-	double *toLoad = malloc(sizeof(double) * 3);
-	char *inBuffer = malloc(sizeof(char) * 256);
-	
-	printf("Note: Program will continue execution until three valid inputs are entered.\n");
-	printf("Note: Program will disregard any numerical entries after the first for a given value.\n");
+	double toLoadA = 0, toLoadB = 0, toLoadC = 0;
 
-	do{
-		printf("Please enter a number for value a: ");
-		fgets(inBuffer, 256, stdin);
-		// if (*toLoad == 0) { printf("a, b, and c can't be zero!\n"); }
-	}
-	while(sscanf(inBuffer, "%lf", toLoad) != 1 || *toLoad == 0);
+	runtimeLoad(&toLoadA, &toLoadB, &toLoadC);
 
-	do{
-		printf("Please enter a number for value b: ");
-		fgets(inBuffer, 256, stdin);
-	}
-	while(sscanf(inBuffer, "%lf", toLoad + sizeof(double)) != 1 
-		|| *(toLoad + sizeof(double)) == 0);
-	
-	do{
-		printf("Please enter a number for value c: ");
-		fgets(inBuffer, 256, stdin);
-	}
-	while(sscanf(inBuffer, "%lf", toLoad + 2 * sizeof(double)) != 1 
-		|| *(toLoad + 2 * sizeof(double)) == 0);
-
-
-	double i_a = *toLoad, i_b = *(toLoad + sizeof(double));
-	double i_c = *(toLoad + 2 * sizeof(double)); // Will be parsed from input
+	double i_a = toLoadA, i_b = toLoadB;
+	double i_c = toLoadC; // Will be parsed from input
 	
 	// a, b, and c values for quadratic formula
 	mpf_t a;

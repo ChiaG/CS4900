@@ -1,33 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>			
 
-void runtimeLoad(double * toLoad)
+void runtimeLoad(double *toLoadA, double *toLoadB, double *toLoadC)
 {
-	//printf("%p", toLoad);
-	char * inBuffer = malloc(sizeof(char) * 256);
+	//Variable declaration
+	char *inBuffer = malloc(sizeof(char) * 256);
 	
-	printf("Note: Program will continue execution until three valid inputs are entered.\n");
-	printf("Note: Program will disregard any numerical entries after the first for a given value.\n");
+	//Introductory and input-clarifying messages
+	printf("\nQuadratic Equation Solver\n");
+	printf("-------------------------\n");
+	printf("\nNote: Program will continue execution until three valid inputs are entered.\n");
+	printf("      A valid input is described as any numerical value that is not zero.\n");
+	printf("      Program will disregard any numerical entries after the first for a\n");
+	printf("      given value.\n\n");
 
+	//Input read. Loops will execute until a valid input is given. 
 	do{
-		printf("Please enter a number for value a: ");
+		printf("Please enter a number for root a: ");
+		fgets(inBuffer, 256, stdin);
+		// if (*toLoad == 0) { printf("a, b, and c can't be zero!\n"); }
+	}
+	while(sscanf(inBuffer, "%lf", toLoadA) != 1 || *toLoadA == 0);
+	do{
+		printf("Please enter a number for root b: ");
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoad) != 1);
-
+	while(sscanf(inBuffer, "%lf", toLoadB) != 1 || *toLoadB == 0);
 	do{
-		printf("Please enter a number for value b: ");
+		printf("Please enter a number for root c: ");
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoad + sizeof(double)) != 1);
+	while(sscanf(inBuffer, "%lf", toLoadC) != 1 || *toLoadC == 0);
 
-	do{
-		printf("Please enter a number for value c: ");
-		fgets(inBuffer, 256, stdin);
-	}
-	while(sscanf(inBuffer, "%lf", toLoad + 2 * sizeof(double)) != 1);
-
-	printf("%f", *toLoad);
-	printf("%f", *(toLoad + sizeof(double)));
-	printf("%f", *(toLoad + (2 * sizeof(double))));
+	free(inBuffer);	//Free unused memory buffer to plug memory leak.
+	return;
 }
