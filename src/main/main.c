@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>			
-#include <gmp.h>
-
-void findDiscriminant(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant);
-int findNumRoots(mpf_t discriminant);
-void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, int numRoots);
+#include "All.h"
 
 int main(int argc, char *argv[])
 {

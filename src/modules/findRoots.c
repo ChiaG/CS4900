@@ -1,6 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>	
-#include <gmp.h>
+#include "../main/All.h"
 
 void findDiscriminant(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant)
 {

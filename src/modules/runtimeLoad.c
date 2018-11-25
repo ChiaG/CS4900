@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>			
+#include "../main/All.h"		
 
 void runtimeLoad(double *toLoadA, double *toLoadB, double *toLoadC)
 {
