@@ -10,21 +10,18 @@ int main(int argc, char *argv[])
 {
 	mpf_set_default_prec(6);
 
+	//Input variable declaration and input function execution.
 	double toLoadA = 0, toLoadB = 0, toLoadC = 0;
-
 	runtimeLoad(&toLoadA, &toLoadB, &toLoadC);
 
-	double i_a = toLoadA, i_b = toLoadB;
-	double i_c = toLoadC; // Will be parsed from input
-	
 	// a, b, and c values for quadratic formula
 	mpf_t a;
 	mpf_t b;
 	mpf_t c; 
 
-	mpf_init_set_d(a, i_a); 
-	mpf_init_set_d(b, i_b);
-	mpf_init_set_d(c, i_c);
+	mpf_init_set_d(a, toLoadA); 
+	mpf_init_set_d(b, toLoadB);
+	mpf_init_set_d(c, toLoadC);
 	
 	mpf_t discriminant;
 	int numRoots;
