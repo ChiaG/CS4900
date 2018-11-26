@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	mpf_t b;
 	mpf_t c;
 
-	double testA = 7;
+	double testA = 10;
 	double testB = 6;
 	double testC = -1;
 
@@ -50,9 +50,6 @@ int main(int argc, char *argv[])
 	mpf_init(diffTwo);
 	mpf_init_set_d(cmpOne, -0.735890);
 	mpf_init_set_d(cmpTwo, 1.358899);
-
-	double dmacheps;
-	double dm;
 
 	/*while ((1.0+(dm=dmacheps/2.0)) != 1.0  ) {
 		dmacheps = dm;
