@@ -19,7 +19,7 @@ void runtimeLoad(double *toLoadA, double *toLoadB, double *toLoadC)
 	//on detection of a terminal.
 	do{
 		if (isatty(1)) {
-			printf("Please enter a number for root a: ");
+			printf("Please enter a nonzero number for root a: ");
 		}
 		fgets(inBuffer, 256, stdin);
 		// if (*toLoad == 0) { printf("a, b, and c can't be zero!\n"); }
@@ -27,14 +27,14 @@ void runtimeLoad(double *toLoadA, double *toLoadB, double *toLoadC)
 	while (sscanf(inBuffer, "%lf", toLoadA) != 1 || *toLoadA == 0);
 	do {
 		if (isatty(1)) {
-			printf("Please enter a number for root b: ");
+			printf("Please enter a nonzero number for root b: ");
 		}
 		fgets(inBuffer, 256, stdin);
 	}
 	while (sscanf(inBuffer, "%lf", toLoadB) != 1 || *toLoadB == 0);
 	do {
 		if (isatty(1)) {
-			printf("Please enter a number for root c: ");
+			printf("Please enter a nonzero number for root c: ");
 		}
 		fgets(inBuffer, 256, stdin);
 	}
