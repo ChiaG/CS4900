@@ -1,6 +1,7 @@
 #include "../../src/main/all.h"
 
-int main() {
+int main()
+{
 	char *inBuffer = malloc(sizeof(char) * 256);
 	double *stored_input = malloc(sizeof(double));
 
