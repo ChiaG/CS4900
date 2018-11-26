@@ -1,0 +1,7 @@
+All automated testing was achieved using specialized test drivers written in C and GNU make
+
+https://www.gnu.org/software/make/manual/make.html
+
+We have implemented functions for input validation and root-finding in runtimeLoad.c and findRoots.c, respectively. These functions are in their separate source modules to allow for their discrete unit tests, and each unit test is run from a corresponding test driver and makefile. These are found in approriately-named folders in tests/.
+
+Each test can be carried out with `make run` on the command line, and each makefile also supports a `clean` invocation to remove unneeded object and executable files.

@@ -1,0 +1,7 @@
+We looked to the Linux kernal coding style document for a standard coding format. Considering the scope of the project, we felt that stylistic consistency was all that was needed from a coding standard.
+
+A full documentation of the Linex kernal coding style can be found here: https://www.kernel.org/doc/Documentation/process/coding-style.rst
+
+We have done our best to in no way deviate from the practices outlined in this document.
+
+We always compile with the GNU C Compiler using the -Wall and -pendatic flags for warnings, -o for generating an output file, and -lgmp and -lm to support the The GNU Multiple Precision Arithmetic Library.

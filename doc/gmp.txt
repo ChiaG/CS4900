@@ -1,0 +1,8 @@
+We used the Gnu Multiple Precision Arithmetic Library (GMP) due to its ready-made set of functions for dealing relatively precisely with floating-point numbers. 
+
+You can learn about GMP and its functions here: https://gmplib.org/manual/
+
+You can download GMP here: https://gmplib.org/#DOWNLOAD
+... and find directions on how to install it here: https://gmplib.org/manual/Installing-GMP.html#Installing-GMP
+
+Note that to use GMP you must link the -lgmp and -lm libraries. This is done in our makefiles by default.
