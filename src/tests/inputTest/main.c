@@ -3,10 +3,12 @@
 int main(int argc, char *argv[])
 {
 	//Input variable declaration and input function execution.
-	double toLoadA = 0, toLoadB = 0, toLoadC = 0;
+	double toLoadA = 0;
+	double toLoadB = 0;
+        double toLoadC = 0;
 	runtimeLoad(&toLoadA, &toLoadB, &toLoadC);
 
-	if(toLoadA != 2 || toLoadB != 5 || toLoadC != 3) {
+	if (toLoadA != 2 || toLoadB != 5 || toLoadC != 3) {
 		printf("Error Log File for inputTest\n");
 		printf("----------------------------\n\n");
 		printf("Expected Input:\n");

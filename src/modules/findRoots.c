@@ -50,7 +50,7 @@ int findNumRoots(mpf_t discriminant)
 		return 1;   //only one solution
 	}
 
-    else {
+    else{
         printf("%s\n","There are two solutions");
         mpf_clear(zeroCmp);
         return 2;   //two solutions
@@ -92,7 +92,7 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf
 		printf("Accurate to at least 6 decimal places.\n");
     }
 
-    else {
+    else{
         mpf_sqrt(sqrt, discriminant); //get square root of b^2-4ac
 
 		// gmp_printf("Square Root of Discriminant: %Ff\n", sqrt);
@@ -102,11 +102,11 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf
 		//I would have done the top and compared to print instead.
 		
 
-		if(0 > mpf_cmp(b, zeroCmp)) {  //if b is negative then do -b+sqrt/2a
+		if (0 > mpf_cmp(b, zeroCmp)) {  //if b is negative then do -b+sqrt/2a
 			mpf_add(numerator, neg_b,sqrt);
 			mpf_div(rootOne, numerator, denom);
 
-			if(mpf_cmp(rootOne, c) > 0) {				//if root one is greater than c then c/rootOne is rootTwo
+			if (mpf_cmp(rootOne, c) > 0) {				//if root one is greater than c then c/rootOne is rootTwo
 				mpf_div(rootTwo, c, rootOne);
 			}
 			else{
@@ -119,7 +119,7 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf
 			mpf_sub(numerator, neg_b,sqrt);
 			mpf_div(rootOne, numerator, denom);
 
-			if(mpf_cmp(rootOne, c) > 0) {				//if root one is greater than c then c/rootOne is rootTwo
+			if (mpf_cmp(rootOne, c) > 0) {				//if root one is greater than c then c/rootOne is rootTwo
 				mpf_div(rootTwo, c, rootOne);
 			}
 			else{

@@ -6,7 +6,7 @@ void runtimeLoad(double *toLoadA, double *toLoadB, double *toLoadC)
 	char *inBuffer = malloc(sizeof(char) * 256);
 	
 	//Introductory and input-clarifying messages, only do so if a terminal is detected.
-	if(isatty(1)) {
+	if (isatty(1)) {
 		printf("\nQuadratic Equation Solver\n");
 		printf("-------------------------\n");
 		printf("\nNote: Program will continue execution until three valid inputs are entered.\n");
@@ -18,27 +18,27 @@ void runtimeLoad(double *toLoadA, double *toLoadB, double *toLoadC)
 	//Input read. Loops will execute until a valid input is given. Messages will only be output
 	//on detection of a terminal.
 	do{
-		if(isatty(1)) {
+		if (isatty(1)) {
 			printf("Please enter a number for root a: ");
 		}
 		fgets(inBuffer, 256, stdin);
 		// if (*toLoad == 0) { printf("a, b, and c can't be zero!\n"); }
 	}
-	while(sscanf(inBuffer, "%lf", toLoadA) != 1 || *toLoadA == 0);
-	do{
-		if(isatty(1)) {
+	while (sscanf(inBuffer, "%lf", toLoadA) != 1 || *toLoadA == 0);
+	do {
+		if (isatty(1)) {
 			printf("Please enter a number for root b: ");
 		}
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoadB) != 1 || *toLoadB == 0);
-	do{
-		if(isatty(1)) {
+	while (sscanf(inBuffer, "%lf", toLoadB) != 1 || *toLoadB == 0);
+	do {
+		if (isatty(1)) {
 			printf("Please enter a number for root c: ");
 		}
 		fgets(inBuffer, 256, stdin);
 	}
-	while(sscanf(inBuffer, "%lf", toLoadC) != 1 || *toLoadC == 0);
+	while (sscanf(inBuffer, "%lf", toLoadC) != 1 || *toLoadC == 0);
 
 	free(inBuffer);	//Free unused memory buffer to plug memory leak.
 	return;

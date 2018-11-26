@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
 	mpf_init_set_d(cmpOne, -0.735890);
 	mpf_init_set_d(cmpTwo, 1.358899);
 	
-	if(mpf_cmp(rootOne, cmpOne) != 0 || mpf_cmp(rootTwo, cmpTwo)){
+	if (mpf_cmp(rootOne, cmpOne) != 0 || mpf_cmp(rootTwo, cmpTwo)){
 		printf("Error Log File for inputTest\n");
 		printf("----------------------------\n\n");
 		printf("Expected Root Output:\n");
