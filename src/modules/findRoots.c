@@ -98,7 +98,7 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf
         mpf_div(rootOne, neg_b, denom);
 		if (isatty(1)) {	
 			gmp_printf("\nAll Roots: %Ff\n", rootOne);		//rootOne = rootTwo etc
-			printf("Accurate to at least 6 decimal places.\n");
+			printf("Accurate to at least 5 decimal places.\n");
 		}
     }
 
