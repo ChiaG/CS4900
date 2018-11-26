@@ -3,7 +3,7 @@
 Mitchell Hobner, Dustin Robbins, Shahbaaz Singh
 
 ## IMPORTANT
-Any users will need to install the The GNU Multiple Precision Arithmetic Library to use this program.
+Users will need to install the The GNU Multiple Precision Arithmetic Library to use this program.
 
 You can learn about GMP and its functions here: https://gmplib.org/manual/
 
@@ -11,6 +11,9 @@ You can download GMP here: https://gmplib.org/#DOWNLOAD
 ... and find directions on how to install it here: https://gmplib.org/manual/Installing-GMP.html#Installing-GMP
 
 Note that to use GMP you must link the -lgmp and -lm libraries. This is done in our makefiles by default.
+
+## Installation
+Aside from the installation of GMP as mentioned above, no installation is needed to run this program. Simply enter src/main/ and enter `make run` on the command line.
 
 ## Abstract
 This program's purpose is to, given three floating-point numbers a, b, and c, return the "roots" of a quadratic equation with those coefficients (form of "ax^2 + b x + c"). To run it, simply enter /src/main/ and enter `make test` in the command line. A user will be prompted to enter a, b, and c in that order, and will then be given the discriminant of that function (equivalent to "b^2 - 4ac"), and the roots of that function (equivalent to (-b +|- sqrt(b^2 - 4ac)\2a) if there are any.
