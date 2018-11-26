@@ -57,6 +57,13 @@ int main(int argc, char *argv[])
 	gmp_printf("Difference for Expected Root One: %Ff\n", diffOne);
 	gmp_printf("Difference for Expected Root Two: %Ff\n", diffTwo);
 
+	// double dmacheps;
+	// double dm;
+
+	// while((1.0 + (dm = dmacheps / 2.0)) != 1.0  ) {
+	//    dmacheps = dm;
+	// } Compare each difference to <some number> * dmacheps afterwards. Draw inspiration from t1 & t2
+
 	mpf_clear(diffOne);
 	mpf_clear(diffTwo);
 	mpf_clear(discriminant);

@@ -1,9 +1,0 @@
-
-Discriminant: 76.000000
-There are two solutions
-
-First Root: -0.735890
-Second Root: 1.358899
-Accurate to at least 6 decimal places.
-Difference for Expected Root One: -0.000000
-Difference for Expected Root Two: 0.000000

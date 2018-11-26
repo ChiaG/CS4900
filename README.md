@@ -2,7 +2,7 @@
 
 Mitchell Hobner, Dustin Robbins, Shahbaaz Singh
 
-## Important
+## IMPORTANT
 Any users will need to install the The GNU Multiple Precision Arithmetic Library to use this program.
 
 You can learn about GMP and its functions here: https://gmplib.org/manual/
