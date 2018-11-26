@@ -43,22 +43,22 @@ int main(int argc, char *argv[])
 
 	mpf_t cmpOne;
 	mpf_t cmpTwo;
+	mpf_t diffOne;
+	mpf_t diffTwo;
 
+	mpf_init(diffOne);
+	mpf_init(diffTwo);
 	mpf_init_set_d(cmpOne, -0.735890);
 	mpf_init_set_d(cmpTwo, 1.358899);
-	
-	if (mpf_cmp(rootOne, cmpOne) != 0 || mpf_cmp(rootTwo, cmpTwo)){
-		printf("Error Log File for inputTest\n");
-		printf("----------------------------\n\n");
-		printf("Expected Root Output:\n");
-		printf("Root One: -0.735890\n");
-		printf("Root Two: 1.358899\n");
-		printf("\n");
-		printf("Actual Root Output:\n");
-		gmp_printf("Root One: %Ff\n", rootOne);
-		gmp_printf("Root Two: %Ff\n", rootTwo);
-	}
 
+	mpf_reldiff(diffOne, rootOne, cmpOne);
+	mpf_reldiff(diffTwo, rootTwo, cmpTwo);
+
+	gmp_printf("Difference for Expected Root One: %Ff\n", diffOne);
+	gmp_printf("Difference for Expected Root Two: %Ff\n", diffTwo);
+
+	mpf_clear(diffOne);
+	mpf_clear(diffTwo);
 	mpf_clear(discriminant);
 	mpf_clear(rootOne);
 	mpf_clear(rootTwo);
