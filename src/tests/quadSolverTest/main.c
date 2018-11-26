@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	mpf_t b;
 	mpf_t c;
 
-	double testA = 10;
+	double testA = 7;
 	double testB = 6;
 	double testC = -1;
 
@@ -51,18 +51,33 @@ int main(int argc, char *argv[])
 	mpf_init_set_d(cmpOne, -0.735890);
 	mpf_init_set_d(cmpTwo, 1.358899);
 
-	mpf_reldiff(diffOne, rootOne, cmpOne);
-	mpf_reldiff(diffTwo, rootTwo, cmpTwo);
+	double dmacheps;
+	double dm;
 
-	gmp_printf("Difference for Expected Root One: %Ff\n", diffOne);
-	gmp_printf("Difference for Expected Root Two: %Ff\n", diffTwo);
+	/*while ((1.0+(dm=dmacheps/2.0)) != 1.0  ) {
+		dmacheps = dm;
+	}*/
 
-	// double dmacheps;
-	// double dm;
+	
+	mpf_sub(diffOne, rootOne, cmpOne);
+	mpf_abs(diffOne, diffOne);
+	mpf_sub(diffTwo, rootTwo, cmpTwo);
+	mpf_abs(diffTwo, diffTwo);
 
-	// while((1.0 + (dm = dmacheps / 2.0)) != 1.0  ) {
-	//    dmacheps = dm;
-	// } Compare each difference to <some number> * dmacheps afterwards. Draw inspiration from t1 & t2
+	gmp_printf("Testing Difference from Expected and Actual Root One... %Ff\n", diffOne);
+	gmp_printf("Testing Difference from Expected and Actual Root Two... %Ff\n", diffTwo);
+
+	if (mpf_cmp_d(diffOne, .000001) == 1 ){		//this is used to check difference
+		printf("\nError Log File for inputTest\n");
+		printf("----------------------------\n\n");
+		printf("Expected Roots Output:\n");
+		printf("Root One: -0.735890\n");
+		printf("Root Two: 1.358899\n");
+		printf("\n");
+		printf("Actual Roots Output:\n");
+		gmp_printf("Actual Root One: %Ff\n", rootOne);
+		gmp_printf("Actual Root Two: %Ff\n", rootTwo);
+	}
 
 	mpf_clear(diffOne);
 	mpf_clear(diffTwo);

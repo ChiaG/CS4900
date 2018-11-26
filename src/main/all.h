@@ -2,6 +2,7 @@
 #define ALL_H
 
 #include <stdio.h>
+#include <math.h>
 #include <stdlib.h>	
 #include <unistd.h>		
 #include <gmp.h>
