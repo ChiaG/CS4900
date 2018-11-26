@@ -64,9 +64,6 @@ int main(int argc, char *argv[])
 	mpf_sub(diffTwo, rootTwo, cmpTwo);
 	mpf_abs(diffTwo, diffTwo);
 
-	gmp_printf("Testing Difference from Expected and Actual Root One... %Ff\n", diffOne);
-	gmp_printf("Testing Difference from Expected and Actual Root Two... %Ff\n", diffTwo);
-
 	if (mpf_cmp_d(diffOne, .000001) == 1 ){		//this is used to check difference
 		printf("\nError Log File for inputTest\n");
 		printf("----------------------------\n\n");
