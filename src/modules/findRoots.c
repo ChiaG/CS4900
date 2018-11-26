@@ -24,7 +24,9 @@ void findDiscriminant(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant)
 
 	mpf_sub(discriminant, bsq, fac); // Get discriminant
 
-	gmp_printf("\nDiscriminant: %Ff\n", discriminant);
+	if (isatty(1)) {	
+		gmp_printf("\nDiscriminant: %Ff\n", discriminant);
+	}
 
     mpf_clear(bsq); // Don't need these, now
 	mpf_clear(fac);
@@ -39,19 +41,25 @@ int findNumRoots(mpf_t discriminant)
     mpf_init_set_d(zeroCmp, 0.0);
 
     if (0 > mpf_cmp(discriminant, zeroCmp)) { //compare with 0 to see if negative
-		printf("%s\n","There are no real solutions");
+		if (isatty(1)) {	
+			printf("%s\n","There are no real solutions");
+    	}
         mpf_clear(zeroCmp);
         return 0;
 	}
 
     else if (mpf_cmp(discriminant, zeroCmp) == 0) {		//-b/2a if discriminant is 0
-        printf("%s\n","There is only one solution");
+		if (isatty(1)) {	
+	        printf("%s\n","There is only one solution");
+        }
         mpf_clear(zeroCmp);
 		return 1;   //only one solution
 	}
 
     else{
-        printf("%s\n","There are two solutions");
+		if (isatty(1)) {	
+	        printf("%s\n","There are two solutions");
+    	}
         mpf_clear(zeroCmp);
         return 2;   //two solutions
     }
@@ -88,8 +96,10 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf
 
     else if (numRoots == 1) {
         mpf_div(rootOne, neg_b, denom);
-		gmp_printf("\nAll Roots: %Ff\n", rootOne);		//rootOne = rootTwo etc
-		printf("Accurate to at least 6 decimal places.\n");
+		if (isatty(1)) {	
+			gmp_printf("\nAll Roots: %Ff\n", rootOne);		//rootOne = rootTwo etc
+			printf("Accurate to at least 6 decimal places.\n");
+		}
     }
 
     else{
@@ -127,10 +137,11 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf
 				mpf_div(rootTwo, numerator, denom);
 			}
 		}
-
-		gmp_printf("\nFirst Root: %Ff\n", rootOne);
-		gmp_printf("Second Root: %Ff\n", rootTwo);
-		printf("Accurate to at least 6 decimal places.\n");
+		if (isatty(1)) {	
+			gmp_printf("\nFirst Root: %Ff\n", rootOne);
+			gmp_printf("Second Root: %Ff\n", rootTwo);
+			printf("Accurate to at least 6 decimal places.\n");
+		}
 	}
 
 	mpf_clear(zeroCmp);
