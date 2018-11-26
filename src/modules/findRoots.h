@@ -3,6 +3,6 @@
 
 void findDiscriminant(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant);
 int findNumRoots(mpf_t discriminant);
-void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, int numRoots);
+void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf_t rootTwo, int numRoots);
 
 #endif

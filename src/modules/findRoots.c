@@ -59,15 +59,12 @@ int findNumRoots(mpf_t discriminant)
 }
 
 
-void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, int numRoots)
+void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, mpf_t rootOne, mpf_t rootTwo, int numRoots)
 {
     mpf_t zeroCmp; //0.0 initialized for comparison
 	mpf_init_set_d(zeroCmp, 0.0);
 
 	mpf_t sqrt;     //square root of discriminant
-
-	mpf_t rootOne;  //two roots at most
-	mpf_t rootTwo;
 
 	mpf_t numerator;      //either (-b + discriminant) or (-b - discriminant)
 	mpf_t denom;	//2a basically
@@ -77,8 +74,6 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, int numRoots)
 		
 	mpf_init_set_d(two, 2.0); //set two to 2
 	mpf_init(sqrt);
-	mpf_init(rootOne);
-	mpf_init(rootTwo);
 	mpf_init(numerator);
 	mpf_init(denom);
 	mpf_init(neg_b);
@@ -140,8 +135,6 @@ void findRoots(mpf_t a, mpf_t b, mpf_t c, mpf_t discriminant, int numRoots)
 
 	mpf_clear(zeroCmp);
 	mpf_clear(sqrt);
-	mpf_clear(rootOne);
-	mpf_clear(rootTwo);
 	mpf_clear(numerator);
 	mpf_clear(denom);
 	mpf_clear(two);
